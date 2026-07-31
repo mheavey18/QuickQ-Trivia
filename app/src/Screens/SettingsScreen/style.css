@@ -5,8 +5,26 @@
     flex-grow: 1;
 }
 
+.Settings h3 {
+    color: var(--dark-purple);
+    margin-top: 0;
+}
+
+.Settings p {
+    line-height: 1.5;
+}
+
 .CloseButton {
     align-self: flex-end;
+    width: auto;
+    padding: 10px 20px;
+    background-color: var(--dark-purple);
+    color: var(--white);
+    font-weight: bold;
+}
+
+.CloseButton:active {
+    background-color: #4a12bd;
 }
 
 .CommunityFooter {
@@ -29,10 +47,4 @@
 .SocialLogo {
     height: 20px;
     color: black;
-}
-
-.CloseIcon {
-    height: 20px;
-    align-self: flex-end;
-    margin: -5px;
 }

@@ -12,11 +12,37 @@
 
 /* Modal Content Box */
 .ModalContent {
-    background-color: #fefefe;
+    position: relative;
+    background-color: var(--white);
     margin: 10% auto; /* Center it */
-    padding: 20px;
-    border: 1px solid #888;
+    padding: 24px 20px 20px;
     width: 70%;
     max-width: 500px;
     border-radius: 10px;
+    animation: modalFadeIn 0.2s ease-out;
+}
+
+.ModalCloseIcon {
+    position: absolute;
+    top: 14px;
+    right: 14px;
+    height: 16px;
+    padding: 8px;
+    color: #888;
+    cursor: pointer;
+}
+
+.ModalCloseIcon:active {
+    color: #555;
+}
+
+@keyframes modalFadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-8px) scale(0.98);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
 }

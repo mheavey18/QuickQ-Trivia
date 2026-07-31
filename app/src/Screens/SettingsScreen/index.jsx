@@ -1,9 +1,8 @@
-import React, { useEffect, useRef } from "react";
+import React from "react";
 import Modal from "../../Components/Modal";
 import "./style.css";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faX } from "@fortawesome/free-solid-svg-icons";
 import {
     faInstagram,
     faXTwitter,
@@ -12,32 +11,11 @@ import {
 } from "@fortawesome/free-brands-svg-icons";
 
 const SettingsScreen = ({ showModal, setShowModal }) => {
-    const modalRef = useRef(null); // Create a ref to the modal content
-    useEffect(() => {
-        const handleClickOutside = (event) => {
-            if (modalRef.current && !modalRef.current.contains(event.target)) {
-                setShowModal(false);
-            }
-        };
-        if (showModal) {
-            document.addEventListener("mousedown", handleClickOutside);
-        } else {
-            document.removeEventListener("mousedown", handleClickOutside);
-        }
-
-        return () => {
-            document.removeEventListener("mousedown", handleClickOutside);
-        };
-    }, [showModal, setShowModal]);
+    const handleClose = () => setShowModal(false);
 
     return (
-        <Modal showModal>
-            <div className="Settings" ref={modalRef}>
-                <FontAwesomeIcon
-                    icon={faX}
-                    className="CloseIcon"
-                    onClick={() => setShowModal(false)}
-                />
+        <Modal showModal={showModal} onClose={handleClose}>
+            <div className="Settings">
                 <div>
                     <h3>How to Play QuickQ</h3>
                     <b>QuickQ</b> is a <b>90 second</b> daily trivia quiz. Once
@@ -117,11 +95,8 @@ const SettingsScreen = ({ showModal, setShowModal }) => {
                     </div>
                 </div>
                 <br />
-                <button
-                    className="CloseButton"
-                    onClick={() => setShowModal(!showModal)}
-                >
-                    Close
+                <button className="CloseButton" onClick={handleClose}>
+                    Got it!
                 </button>
             </div>
         </Modal>
